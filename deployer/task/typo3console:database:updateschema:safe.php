@@ -13,4 +13,4 @@ task('typo3console:database:updateschema:safe', function () {
 
     run('cd {{active_dir}} && {{bin/php}} {{bin/typo3cms}} database:updateschema safe');
 
-})->desc('ext:typo3_console command "database:updateschema" with "safe" argument');
+})->desc('ext:typo3_console command "database:updateschema safe"');
