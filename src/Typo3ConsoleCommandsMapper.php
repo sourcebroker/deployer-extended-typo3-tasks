@@ -2,14 +2,11 @@
 
 namespace Deployer;
 
-// run only if called from deployer context
-if (PHP_SAPI === 'cli' && defined('DEPLOYER_MODE')) {
-    $tasks = [];
+if (defined('DEPLOYER') && PHP_SAPI === 'cli') {
     exec("typo3cms help --raw", $output);
-    foreach ($output as $record) {
-        $tasks[substr($record, 0, strpos($record, ' '))] = trim(substr($record, strpos($record, ' '), strlen($record)));
-    }
-    foreach ($tasks as $taskKey => $taskDescription) {
+    foreach ((array)$output as $outputLine) {
+        $taskKey = substr($outputLine, 0, strpos($outputLine, ' '));
+        $taskDescription = trim(substr($outputLine, strpos($outputLine, ' '), strlen($outputLine)));
         task('typo3console:' . $taskKey, function () use ($taskKey) {
             if (run('if [ -L {{deploy_path}}/release ] ; then echo true; fi')->toBool()) {
                 set('active_dir', get('deploy_path') . '/release');
