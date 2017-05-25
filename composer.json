@@ -11,6 +11,10 @@
     {
       "name": "Krystian Szymukowicz",
       "email": "k.szymukowicz@gmail.com"
+    },
+    {
+      "name": "Michał Jankiewicz",
+      "email": "michaljankiewicz@gmail.com"
     }
   ],
   "require": {
@@ -18,11 +22,8 @@
     "helhum/typo3-console": "~4.4"
   },
   "autoload": {
-    "psr-4": {
-      "SourceBroker\\DeployerExtendedTypo3Console\\": "src/"
-    },
     "files": [
-      "src/Autoload.php"
+      "src/Typo3ConsoleCommandsMapper.php"
     ]
   }
 }
