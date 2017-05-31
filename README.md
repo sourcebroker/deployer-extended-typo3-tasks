@@ -1,8 +1,8 @@
 ## What does it do?
 
-This package takes TYPO3 cli commands and typo3_console commands and make them available as 
-deployer tasks. The mapping of commands is made automatically which means all commands of currently 
-loaded TYPO3 extensions are available also (by typo3_console).
+This package takes TYPO3 cli commands (since TYPO3 8.7) and typo3_console commands and make them available as 
+deployer tasks. The mapping of commands is made automatically which means all commands of currently loaded 
+TYPO3 extensions are available also (by typo3_console mapping).
 
 ## Installation
 
@@ -14,11 +14,11 @@ After installation you can use all TYPO3 and typo3_console commands like in foll
 
     dep typo3cms:database:updateschema live
 
-or for TYPO3 commands:
+or for TYPO3 commands (since TYPO3 8.7):
 
     dep typo3:cleanup:deletedrecords live
 
-If you want to see th output of command then use -vvv switch. Example:
+If you want to see the output of command then use -vvv switch. Example:
 
     dep typo3:cleanup:deletedrecords live -vvv
     
