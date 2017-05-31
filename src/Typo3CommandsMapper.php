@@ -18,13 +18,16 @@ if (defined('DEPLOYER') && PHP_SAPI === 'cli') {
         'exitCode' => $exitStatus
     ];
 
-    exec("./vendor/bin/typo3 list --raw", $typo3, $exitStatus);
-    $deployerTasksGroups[] = [
-        'deployerPrefix' => 'typo3',
-        'binary' => 'typo3',
-        'commands' => $typo3,
-        'exitCode' => $exitStatus
-    ];
+    // Since TYPO3 8 there is ability to call TYPO3 commands directly by using "typo3" in cli
+    if(file_exists('./vendor/bin/typo3')) {
+        exec("./vendor/bin/typo3 list --raw", $typo3, $exitStatus);
+        $deployerTasksGroups[] = [
+            'deployerPrefix' => 'typo3',
+            'binary' => 'typo3',
+            'commands' => $typo3,
+            'exitCode' => $exitStatus
+        ];
+    }
 
     foreach ($deployerTasksGroups as $deployerTasksGroup) {
         if ($deployerTasksGroup['exitCode'] === 0) {
