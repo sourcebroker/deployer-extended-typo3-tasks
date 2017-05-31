@@ -2,12 +2,11 @@
 
 namespace Deployer;
 
-if (defined('DEPLOYER') && PHP_SAPI === 'cli') {
-
+if (PHP_SAPI === 'cli' && defined('DEPLOYER')) {
     option('option', null, 4, 'Options for typo3cms or typo3 commands');
+
     // We looking for available command on local instance. This assume of course that local and remote instances have
     // the same version of TYPO3 and extensions which should be true for most cases.
-
     $deployerTasksGroups = [];
 
     exec("./vendor/bin/typo3cms help --raw", $typo3cms, $exitStatus);
@@ -19,7 +18,7 @@ if (defined('DEPLOYER') && PHP_SAPI === 'cli') {
     ];
 
     // Since TYPO3 8 there is ability to call TYPO3 commands directly by using "typo3" in cli
-    if(file_exists('./vendor/bin/typo3')) {
+    if (file_exists('./vendor/bin/typo3')) {
         exec("./vendor/bin/typo3 list --raw", $typo3, $exitStatus);
         $deployerTasksGroups[] = [
             'deployerPrefix' => 'typo3',
