@@ -43,21 +43,21 @@ class Loader
                         if (preg_match('/^[a-zA-Z:]+$/', $taskKey)) {
                             $deployerTasksGroupBinary = $deployerTasksGroup['binary'];
                             \Deployer\task($deployerTasksGroup['deployerPrefix'] . ':' . $taskKey, function () use ($taskKey, $deployerTasksGroupBinary) {
-                                if (test('[ -L {{deploy_path}}/release ]')) {
-                                    set('active_dir', get('deploy_path') . '/release');
+                                if (\Deployer\test('[ -L {{deploy_path}}/release ]')) {
+                                    \Deployer\set('active_dir', \Deployer\get('deploy_path') . '/release');
                                 } else {
-                                    set('active_dir', get('deploy_path') . '/current');
+                                    \Deployer\set('active_dir', \Deployer\get('deploy_path') . '/current');
                                 }
                                 $option = '';
                                 if (input()->hasOption('option')) {
                                     $option = input()->getOption('option');
                                 }
-                                if (get('bin/' . $deployerTasksGroupBinary, false) === false) {
-                                    $command = run('which ' . $deployerTasksGroupBinary)->toString();
+                                if (\Deployer\get('bin/' . $deployerTasksGroupBinary, false) === false) {
+                                    $command = \Deployer\run('which ' . $deployerTasksGroupBinary)->toString();
                                 } else {
                                     $command = '{{bin/' . $deployerTasksGroupBinary . '}}';
                                 }
-                                run('cd {{active_dir}} && {{bin/php}} ' . $command . ' ' . $taskKey . ' ' . $option);
+                                \Deployer\run('cd {{active_dir}} && {{bin/php}} ' . $command . ' ' . $taskKey . ' ' . $option);
                             })->desc($taskDescription);
                         }
                     }
