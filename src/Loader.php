@@ -1,13 +1,12 @@
 <?php
 
 namespace SourceBroker\DeployerExtendedTypo3Tasks;
-use Deployer\Deployer;
 
 class Loader
 {
     public function __construct()
     {
-        option('option', null, 4, 'Options for typo3cms or typo3 commands');
+        \Deployer\option('option', null, 4, 'Options for typo3cms or typo3 commands');
 
         // We looking for available command on local instance. This assume of course that local and remote instances have
         // the same version of TYPO3 and extensions which should be true for most cases.
@@ -43,7 +42,7 @@ class Loader
                         $taskDescription = trim($match[2]);
                         if (preg_match('/^[a-zA-Z:]+$/', $taskKey)) {
                             $deployerTasksGroupBinary = $deployerTasksGroup['binary'];
-                            task($deployerTasksGroup['deployerPrefix'] . ':' . $taskKey, function () use ($taskKey, $deployerTasksGroupBinary) {
+                            \Deployer\task($deployerTasksGroup['deployerPrefix'] . ':' . $taskKey, function () use ($taskKey, $deployerTasksGroupBinary) {
                                 if (test('[ -L {{deploy_path}}/release ]')) {
                                     set('active_dir', get('deploy_path') . '/release');
                                 } else {
