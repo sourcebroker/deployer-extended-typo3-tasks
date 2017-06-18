@@ -22,8 +22,8 @@
     "helhum/typo3-console": "^4.4"
   },
   "autoload": {
-    "files": [
-      "src/Typo3CommandsMapper.php"
-    ]
+    "psr-4": {
+      "SourceBroker\\DeployerExtendedTypo3Tasks\\": "src/"
+    }
   }
 }
