@@ -18,6 +18,8 @@ This package takes TYPO3 cli commands (since TYPO3 8.7) and typo3_console comman
 deployer tasks. The mapping of commands is made automatically which means all commands of currently loaded
 TYPO3 extensions are available also (by typo3_console mapping).
 
+**NOTE! Its tested only with Deployer 4.3.0!**
+
 How this can be useful for me?
 ------------------------------
 
