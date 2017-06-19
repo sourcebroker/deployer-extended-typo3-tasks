@@ -49,8 +49,8 @@ class Loader
                                     \Deployer\set('active_dir', \Deployer\get('deploy_path') . '/current');
                                 }
                                 $option = '';
-                                if (input()->hasOption('option')) {
-                                    $option = input()->getOption('option');
+                                if (\Deployer\input()->hasOption('option')) {
+                                    $option = \Deployer\input()->getOption('option');
                                 }
                                 if (\Deployer\get('bin/' . $deployerTasksGroupBinary, false) === false) {
                                     $command = \Deployer\run('which ' . $deployerTasksGroupBinary)->toString();
