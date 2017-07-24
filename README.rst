@@ -20,12 +20,6 @@ TYPO3 extensions are available also (by typo3_console mapping).
 
 **NOTE! Its tested only with Deployer 4.3.0!**
 
-How this can be useful for me?
-------------------------------
-
-The most useful is "dep media:pull [target]" task which allows you to pull media from target instance with rsync.
-Having possibility to fast synchronise media can speed up instance dependent development.
-
 Installation
 ------------
 
@@ -69,10 +63,10 @@ If you want to see the output of command then use -vvv switch. Example:
 
    dep typo3:cleanup:deletedrecords live -vvv
 
-If you want to add some option then use "option" option and put whole option inside. Example:
+If you want to add some option then use "t3option" option and put whole option inside. Example:
 ::
 
-   dep typo3cms:database:updateschema live --option="--schema-update-types=\"*.add\""
+   dep typo3cms:database:updateschema live --t3option="--schema-update-types=\"*.add\""
 
 
 

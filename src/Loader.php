@@ -6,7 +6,7 @@ class Loader
 {
     public function __construct()
     {
-        \Deployer\option('option', null, 4, 'Options for typo3cms or typo3 commands');
+        \Deployer\option('t3option', null, 4, 'Options for typo3cms or typo3 commands');
 
         // We looking for available command on local instance. This assume of course that local and remote instances have
         // the same version of TYPO3 and extensions which should be true for most cases.
