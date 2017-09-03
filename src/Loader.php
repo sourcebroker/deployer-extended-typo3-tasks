@@ -43,11 +43,6 @@ class Loader
                         if (preg_match('/^[a-zA-Z:]+$/', $taskKey)) {
                             $deployerTasksGroupBinary = $deployerTasksGroup['binary'];
                             \Deployer\task($deployerTasksGroup['deployerPrefix'] . ':' . $taskKey, function () use ($taskKey, $deployerTasksGroupBinary) {
-                                if (\Deployer\test('[ -L {{deploy_path}}/release ]')) {
-                                    \Deployer\set('active_dir', \Deployer\get('deploy_path') . '/release');
-                                } else {
-                                    \Deployer\set('active_dir', \Deployer\get('deploy_path') . '/current');
-                                }
                                 $option = '';
                                 if (\Deployer\input()->hasOption('option')) {
                                     $option = \Deployer\input()->getOption('option');
@@ -57,7 +52,10 @@ class Loader
                                 } else {
                                     $command = '{{bin/' . $deployerTasksGroupBinary . '}}';
                                 }
-                                \Deployer\run('cd {{active_dir}} && {{bin/php}} ' . $command . ' ' . $taskKey . ' ' . $option);
+                                $activeDir = \Deployer\test('[ -L {{deploy_path}}/release ]') ?
+                                    \Deployer\get('deploy_path') . '/release' :
+                                    \Deployer\get('deploy_path') . '/current';
+                                \Deployer\run('cd ' . $activeDir . ' && {{bin/php}} ' . $command . ' ' . $taskKey . ' ' . $option);
                             })->desc($taskDescription);
                         }
                     }
