@@ -52,7 +52,7 @@ class Loader
                                 } else {
                                     $command = '{{bin/' . $deployerTasksGroupBinary . '}}';
                                 }
-                                $activeDir = \Deployer\test('[ -L {{deploy_path}}/release ]') ?
+                                $activeDir = \Deployer\test('[ -e {{deploy_path}}/release ]') ?
                                     \Deployer\get('deploy_path') . '/release' :
                                     \Deployer\get('deploy_path') . '/current';
                                 \Deployer\run('cd ' . $activeDir . ' && {{bin/php}} ' . $command . ' ' . $taskKey . ' ' . $option);
