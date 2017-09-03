@@ -44,8 +44,8 @@ class Loader
                             $deployerTasksGroupBinary = $deployerTasksGroup['binary'];
                             \Deployer\task($deployerTasksGroup['deployerPrefix'] . ':' . $taskKey, function () use ($taskKey, $deployerTasksGroupBinary) {
                                 $option = '';
-                                if (\Deployer\input()->hasOption('option')) {
-                                    $option = \Deployer\input()->getOption('option');
+                                if (\Deployer\input()->hasOption('t3option')) {
+                                    $option = \Deployer\input()->getOption('t3option');
                                 }
                                 if (\Deployer\get('bin/' . $deployerTasksGroupBinary, false) === false) {
                                     $command = \Deployer\run('which ' . $deployerTasksGroupBinary)->toString();
