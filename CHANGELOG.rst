@@ -14,3 +14,5 @@ Changelog
 3) [BUGFIX] Fix wrong option read: it as "option" should be "t3option".
 
 4) [TASK] Code reformatting.
+
+5) [TASK] Add CHANGELOG.rst link to README.rst

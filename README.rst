@@ -151,3 +151,8 @@ To-Do list
 ----------
 
 None.
+
+Changelog
+---------
+
+See https://github.com/sourcebroker/deployer-extended-typo3-tasks/blob/master/CHANGELOG.rst
