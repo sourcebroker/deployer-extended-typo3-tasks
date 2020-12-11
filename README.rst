@@ -1,3 +1,5 @@
+! Note - Project no longer maintained
+
 deployer-extended-typo3-tasks
 =============================
 
